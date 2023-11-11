@@ -1,16 +1,16 @@
 const express = require("express");
-const route = express.Router()
-const todoRoutes = require("./todo-route")
-const userRoutes = require("./user-route")
+const route = express.Router();
+const todoRoutes = require("./todo-route");
+const userRoutes = require("./user-route");
 const authRoutes = require("./auth-route");
 const verifyToken = require("../middleware/auth");
 
 route.get("/", (req, res) => {
-    res.json("halo")
-})
+  res.json("halo");
+});
 
-route.use("/users", userRoutes)
-route.use("/auth", authRoutes)
-route.use("/todos", verifyToken, todoRoutes)
+route.use("/users", userRoutes);
+route.use("/auth", authRoutes);
+route.use("/todos", verifyToken, todoRoutes);
 
-module.exports = route
+module.exports = route;
