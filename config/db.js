@@ -2,10 +2,10 @@ const {Sequelize} = require('sequelize');
 
 const sequelize = new Sequelize({
   host: 'localhost',
-  dialect: "mysql",
+  dialect: "mariadb",
   username: "root",
   password: "root",
-  database: "todolist-project"
+  database: "todolist_project"
 });
 
 module.exports = sequelize

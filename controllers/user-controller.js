@@ -12,22 +12,24 @@ module.exports = {
         })
     },
   
-    getUserById: (req, res) => {
-  
+    getUserById: async (req, res) => {
+        const { id } = req.params
+        const user = await Users.find(user => user.id == id)
+        res.json({
+            message: "berhasil mendapatkan user by id",
+            data: user
+        })
     },
 
     createUser : async (req, res) => {
         let data = req.body
     
         try {
-          // hash password
           const hashPassword = bcrypt.hashSync(data.password, 10)
           data.password = hashPassword
     
-          // input data
           await User.create(data)
     
-          // send response
           res.status(201).json({
             message: "berhasil menambahkan user"
           })

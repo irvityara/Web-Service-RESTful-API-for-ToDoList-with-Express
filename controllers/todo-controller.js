@@ -2,24 +2,22 @@ const Todos = require("../models/Todos");
 const Todo = require("../models/Todos");
 
 module.exports = {
-    getAllTodo: (req, res) => {
-        res.status(200).json({
+    getAllTodo: async (req, res) => {
+        const todos = await Todo.findAll
+
+        res.json({
             message: "berhasil mendapatkan data todo",
-            data: Todos
+            data: todos
         })
     },
-    getTodoById: (req, res) => {
+    getTodoById: async(req, res) => {
         const {id} = req.params
-        const todo = Todos.find(todo => todo.id == id)
+        const todo = await Todos.find(todo => todo.id == id)
 
         res.json({
             message: "berhasil mendapatkan todo by id",
             data: todo
         })
-    },
-
-    getTodoById : (req, res) => {
-
     },
 
     addTodo: (req, res) => {
@@ -37,12 +35,20 @@ module.exports = {
             data: Todos
         })
     },
-    editTodoById: (req, res) => {
+    
+    editTodoById: async (req, res) => {
         const { id } = req.params;
         const { value, status } = req.body;
-        const index = Todos.findIndex((todo) => todo.id = id);
+
+        const index = await Todos.find((todo) => todo.id = id);
         Todos[index] = { id, value, status };
 
+        index.id = id || index.id;
+        index.value = value || index.value;
+        index.status = status !== undefined ? status : index.status;
+
+        await index.save();
+        
         res.json({
             message: "berhasil mengubah data todo",
             data: Todos
@@ -50,7 +56,41 @@ module.exports = {
 
 
     },
-    deleteTodoById: (req, res) => {
+    deleteTodoById: async(req, res) => {
+        const {id} = req.params
+        const todos = await Todo.findAll
 
+        try {
+            const todo = await Todos.find(todo => todo.id == id)
+            
+            if (!todo) {
+                res.json({
+                    message: "Todo not found."
+                })
+            }
+
+            await todo.destroy();
+
+            res.json({
+                message: "berhasil menghapus todo by id",
+                data: todos
+            })
+        } catch {
+            res.json({
+                message: "Cannot delete todo",
+                data: todos
+            })
+        }
+    },
+
+    deleteAllTodo: async (req, res) => {
+        const todos = await Todo.findAll
+
+        await todos.destroy();
+
+        res.json({
+            message: "berhasil menghapus seluruh daftar todo",
+            data: todos
+        })
     },
 }
