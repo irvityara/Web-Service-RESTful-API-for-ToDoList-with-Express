@@ -1,33 +1,23 @@
-//tanpa seeder dan migrations
+'use strict';
 
-const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
-const Todo = require("./Todo");
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class User extends Model {
 
-const User = sequelize.define(
-    "user",
-    {
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      address: DataTypes.STRING,
-    },
-    {
-      // freezeTableName: true,
-      // timestamps: false
+    static associate(models) {
+      // define association here
     }
-  );
-  
-  User.hasMany(Todo, { foreignKey: 'user_id'})
-  
-module.exports = User;
-  
+  }
+  User.init({
+    name: DataTypes.STRING,
+    email: DataTypes.STRING,
+    username: DataTypes.STRING,
+    password: DataTypes.STRING
+  },{
+    sequelize,
+    modelName: 'User',
+  });
+  return User;
+}; 
