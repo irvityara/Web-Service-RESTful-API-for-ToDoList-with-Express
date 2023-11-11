@@ -1,6 +1,8 @@
+const Todo = require("../models/Todos");
+
 module.exports = {
     getAllTodo: (req, res) => {
-        res.json({
+        res.status(200).json({
             message: "berhasil mendapatkan data todo",
             data: Todo
         })
