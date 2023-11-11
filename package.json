@@ -17,6 +17,7 @@
     "jsonwebtoken": "^9.0.2",
     "mariadb": "^3.2.2",
     "mysql": "^2.18.1",
+    "mysql2": "^3.6.3",
     "sequelize": "^6.34.0"
   },
   "devDependencies": {

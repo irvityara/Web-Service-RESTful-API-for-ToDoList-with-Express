@@ -113,3 +113,7 @@ try {
   console.error("Unable to connect to the database", error);
 }
 ```
+
+`$ npx sequelize-cli db:migrate`
+
+`$ npx sequelize-cli seed:generate --name user`

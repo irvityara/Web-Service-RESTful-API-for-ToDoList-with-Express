@@ -4,7 +4,7 @@ const sequelize = new Sequelize({
   host: 'localhost',
   dialect: "mariadb",
   username: "root",
-  password: "root",
+  password: "",
   database: "todolist_project"
 });
 
