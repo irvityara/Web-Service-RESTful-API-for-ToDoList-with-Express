@@ -6,8 +6,12 @@ Getting Started, create package.json
 Install Express
 `$ npm install express`
 
+Menginstall nodemon
+`$ npm i -D nodemon`
+
 Pada package.json bagian script tambahkan:
 `"start": "node app.js"`
+`"dev":"nodemon app.js",`
 
 ---
 
@@ -24,8 +28,8 @@ app.listen(PORT, () => {
 });
 ```
 
-untuk menjalankan kode, gunakan
-`$ npm start`
+untuk memulai menjalankan kode, gunakan
+`$ npm start` dan `npm run dev`
 
 Server berhasil dibuat.
 
