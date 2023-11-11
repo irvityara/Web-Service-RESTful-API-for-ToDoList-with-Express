@@ -1,7 +1,30 @@
-let Todos = [
-    { id: 1, value: "cuci baju" },
-    { id: 2, value: "sapu rumah" },
-    { id: 3, value: "kerjakan tugas" },
-]
+const { DataTypes } = require("sequelize");
+const sequelize = require("../config/db");
+const User = require("./User");
 
-module.exports = Todos
+const Todo = sequelize.define(
+    "todo",
+    {
+      value: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      status: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+      },
+      user_id: {
+        type: DataTypes.INTEGER,
+      }
+    },
+    {
+      // freezeTableName: true,
+      // timestamps: false
+      // underscored: true
+    }
+  );
+  
+  // Todo.belongsTo(User,  { foreignKey: 'user_id'})
+  
+  module.exports = Todo;

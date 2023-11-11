@@ -18,6 +18,10 @@ module.exports = {
         })
     },
 
+    getTodoById : (req, res) => {
+
+    },
+
     addTodo: (req, res) => {
         const data = req.body
 

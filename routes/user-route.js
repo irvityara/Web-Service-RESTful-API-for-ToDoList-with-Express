@@ -1,15 +1,14 @@
 const express = require("express");
-const bcrypt = require("bcrypt")
-const route = express.Router()
+const route = express.Router();
 
-const User = require("../models/Users")
+const {
+  getAllUser,
+  getUserById,
+  createUser,
+} = require("../controllers/user-controller");
 
-route.get("/", (req, res) => {
-    res.json({
-        data: User
-    })
-})
-// route.getById("/:id", (req, res) => {})
+route.get("/", getAllUser);
+route.get("/:id", getUserById);
+route.post("/", createUser);
 
-
-module.exports = route
+module.exports = route;
