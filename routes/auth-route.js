@@ -4,9 +4,31 @@ const route = express.Router()
 
 const User = require("../models/Users")
 
-route.post("/login", () => {
+route.post("/login", (req, res) => {
+    let data = req.body
+
+    const user = User.find(item => item.email == data.email)
+    //select * from user where email = irvityara456@gmail.com
     
+    if (!user) {
+        res.json({
+            message: "email salah!"
+        })
+        return
+    }
+
+    if (bcrypt.compareSync(data.password, user.password)) {
+        res.json({
+            message: "anda berhasil login"
+        })
+        return
+    }
+    
+    res.json({
+        message: "password anda salah"
+    }) 
 })
+
 route.post("/regis", (req, res) => {
     let data = req.body
 
