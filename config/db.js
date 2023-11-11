@@ -1,4 +1,6 @@
-const {Sequelize} = require('sequelize');
+//tanpa seeder dan migrations
+
+const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize({
   host: 'localhost',

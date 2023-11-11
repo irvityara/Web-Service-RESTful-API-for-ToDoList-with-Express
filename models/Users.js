@@ -1,3 +1,5 @@
+//tanpa seeder dan migrations
+
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/db");
 const Todo = require("./Todo");
@@ -27,4 +29,5 @@ const User = sequelize.define(
   
   User.hasMany(Todo, { foreignKey: 'user_id'})
   
-  module.exports = User;
+module.exports = User;
+  
