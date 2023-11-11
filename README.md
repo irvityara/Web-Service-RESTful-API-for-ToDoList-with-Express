@@ -1,6 +1,8 @@
 # Web-Service-RESTful-API-for-ToDoList-with-Express
 
-Getting Started, create package.json
+# Getting Started 1
+
+Create package.json
 
 ```markdown
 $ npm init -y
@@ -12,19 +14,19 @@ Install Express
 $ npm install express
 ```
 
-Menginstall nodemon
+Menginstall nodemon untuk mempermudah dalam menjalankan kode.
 
 ```markdown
 $ npm i -D nodemon
 ```
 
-Menginstall bcrypt
+Menginstall bcrypt mengubah data pasword menjadi kode hash.
 
 ```markdown
 $ npm install bcrypt
 ```
 
-Menginstall json web token
+Menginstall json web token, untuk melakukan authorization dengan token.
 
 ```markdown
 $ npm i jsonwebtoken
@@ -57,18 +59,18 @@ app.listen(PORT, () => {
 });
 ```
 
-untuk memulai menjalankan kode, gunakan
+Untuk memulai menjalankan kode, gunakan
 
-`````markdown
+```markdown
 $ npm start
 $ npm run dev
+```
 
-````markdown
 Server berhasil dibuat.
 
 ---
 
-Installation Sequelize
+Installation Sequelize dan drive database.
 
 ```markdown
 $ npm install --save sequelize
@@ -77,12 +79,8 @@ $ npm isntall --save mysql
 
 $ npm install --save mariadb
 ```
-````
-`````
 
-````
-
-setting pada database
+Setting untuk melakukan koneksi pada database.
 
 ```javascript
 const { Sequelize } = require("sequelize");
@@ -95,4 +93,16 @@ const sequelize = new Sequelize({
   database: "todolist_project",
 });
 ```
-````
+
+Melakukan testing terhadap koneksi.
+
+```javascript
+try {
+  await db.authenticate();
+  console.log("Connection has been established succesfully.");
+
+  console.log("All models were synchronized succesfully.");
+} catch (error) {
+  console.error("Unable to connect to the database", error);
+}
+```
