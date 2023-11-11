@@ -16,8 +16,15 @@ Menginstall json web token
 `$ npm i jsonwebtoken`
 
 Pada package.json bagian script tambahkan:
-`"start": "node app.js"`
-`"dev":"nodemon app.js",`
+
+````javascript
+{
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },}
+```
 
 ---
 
@@ -32,7 +39,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("server running on port : " + PORT);
 });
-```
+````
 
 untuk memulai menjalankan kode, gunakan
 `$ npm start` dan `npm run dev`
