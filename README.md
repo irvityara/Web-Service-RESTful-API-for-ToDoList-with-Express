@@ -12,6 +12,8 @@ Menginstall nodemon
 Menginstall bcrypt
 `$ npm install bcrypt`
 
+`npm i jsonwebtoken`
+
 Pada package.json bagian script tambahkan:
 `"start": "node app.js"`
 `"dev":"nodemon app.js",`
