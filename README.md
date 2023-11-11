@@ -12,6 +12,7 @@ Menginstall nodemon
 Menginstall bcrypt
 `$ npm install bcrypt`
 
+Menginstall json web token
 `npm i jsonwebtoken`
 
 Pada package.json bagian script tambahkan:
