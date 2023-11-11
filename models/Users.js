@@ -1,6 +1,3 @@
-let Users = [
-    { id: 1, value: "irvi"}
-    
-]
+let users = []
 
-module.exports = Users
+module.exports = users

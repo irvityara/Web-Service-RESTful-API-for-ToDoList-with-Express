@@ -1,10 +1,15 @@
 const express = require("express");
+const bcrypt = require("bcrypt")
 const route = express.Router()
 
-route.get("/", () => {})
-route.get("/:id", () => {})
-route.post("/", () => {})
-route.put("/:id", () => { })
-route.delete("/:id", () => {})
+const User = require("../models/Users")
+
+route.get("/", (req, res) => {
+    res.json({
+        data: User
+    })
+})
+// route.getById("/:id", (req, res) => {})
+
 
 module.exports = route

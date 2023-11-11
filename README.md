@@ -9,6 +9,9 @@ Install Express
 Menginstall nodemon
 `$ npm i -D nodemon`
 
+Menginstall bcrypt
+`$ npm install bcrypt`
+
 Pada package.json bagian script tambahkan:
 `"start": "node app.js"`
 `"dev":"nodemon app.js",`
