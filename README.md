@@ -15,7 +15,7 @@ Pada package.json bagian script tambahkan:
 
 ---
 
-Membuat file app.js, tulis kode berikut
+Membuat server pada file app.js, tulis kode berikut
 
 ```javascript
 const express = require("express");
