@@ -48,7 +48,7 @@ module.exports = {
         index.status = status !== undefined ? status : index.status;
 
         await index.save();
-        
+
         res.json({
             message: "berhasil mengubah data todo",
             data: Todos
