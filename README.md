@@ -7,16 +7,28 @@ $ npm init -y
 ```
 
 Install Express
-`$ npm install express`
+
+```markdown
+$ npm install express
+```
 
 Menginstall nodemon
-`$ npm i -D nodemon`
+
+```markdown
+$ npm i -D nodemon
+```
 
 Menginstall bcrypt
-`$ npm install bcrypt`
+
+```markdown
+$ npm install bcrypt
+```
 
 Menginstall json web token
-`$ npm i jsonwebtoken`
+
+```markdown
+$ npm i jsonwebtoken
+```
 
 Pada package.json bagian script tambahkan:
 
@@ -46,17 +58,29 @@ app.listen(PORT, () => {
 ```
 
 untuk memulai menjalankan kode, gunakan
-`$ npm start` dan `npm run dev`
 
+`````markdown
+$ npm start
+$ npm run dev
+
+````markdown
 Server berhasil dibuat.
 
 ---
 
 Installation Sequelize
-`$ npm install --save sequelize`
-`$ npm isntall --save mysql`
 
-`$ npm install --save mariadb`
+```markdown
+$ npm install --save sequelize
+
+$ npm isntall --save mysql
+
+$ npm install --save mariadb
+```
+````
+`````
+
+````
 
 setting pada database
 
@@ -71,3 +95,4 @@ const sequelize = new Sequelize({
   database: "todolist_project",
 });
 ```
+````
