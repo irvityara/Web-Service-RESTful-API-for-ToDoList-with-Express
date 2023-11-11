@@ -5,16 +5,16 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Todos', [
       {
-        id: "1",
-        value: "cuci baju",
+        value: "Cuci Baju",
+        status: false,
       },
       {
-        id: "2",
-        value: "cuci piring",
+        value: "Sapu Lantai",
+        status: false,
       },
       {
-        id: "3",
-        value: "sapu rumah",
+        value: "Kerjakan Tugas",
+        status: false,
       },
     ])
   },
