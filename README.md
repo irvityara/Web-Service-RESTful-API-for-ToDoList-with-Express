@@ -73,10 +73,17 @@ Server berhasil dibuat.
 Installation Sequelize dan drive database.
 
 ```markdown
+Instal Sequelize :
 $ npm install --save sequelize
 
-$ npm isntall --save mysql
+Installing CLI :
+$ npm install --save-dev sequelize-cli
 
+Initialisasi CLI :
+$ npx sequelize-cli init
+
+Installing drive database :
+$ npm isntall --save mysql
 $ npm install --save mariadb
 ```
 
