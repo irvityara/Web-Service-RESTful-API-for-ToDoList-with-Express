@@ -59,6 +59,8 @@ Pada kode ini, kita menggunakan MySQL dengan mariaDB sebagai dialect database.
    }
    ```
 
+## Server
+
 Buatlah server pada file app.js, tulis kode berikut
 
     ```javascript
@@ -72,14 +74,14 @@ Buatlah server pada file app.js, tulis kode berikut
     });
     ```
 
-Untuk memulai menjalankan kode, gunakan
+Untuk memulai menjalankan kode, gunakan command :
 
 ```markdown
 $ npm start //untuk memulai menjalankan server
 $ npm run dev //untuk setiap kali menghubungkan server
 ```
 
-## Server berhasil dibuat.
+Server berhasil dibuat.
 
 ## **Set Up Sequelize**
 
@@ -200,10 +202,112 @@ $ npm run dev //untuk setiap kali menghubungkan server
    Command untuk menambahkan isi data dalam seed ke database.
    `$ npx sequelize-cli db:seed:all`
 
-```markdown
-Menginstall bcrypt untuk mengubah data password menjadi kode hash.
-$ npm install bcrypt
+## Middleware (Membuat Authetication dan Authorization)
 
-Menginstall json web token, untuk melakukan authorization dengan token.
-$ npm i jsonwebtoken
-```
+1. Installing
+
+   Menginstall bcrypt untuk mengubah data password menjadi kode hash.
+
+   ```markdown
+   $ npm install bcrypt
+   ```
+
+   Menginstall json web token, untuk melakukan authorization dengan token.
+
+   ```markdown
+   $ npm i jsonwebtoken
+   ```
+
+2. Membuat route bernama `auth.route.js` pada folder `routes`.
+
+   Membuat sistem user dapat melakukan `registrasi` dan `login` dengan memberikan `username`, `email` dan `password` untuk sistem authentication.
+   Kemudian untuk bisa mengakses todo, user perlu melakukan `validasi token` dengan authorization.
+
+   ```javascript
+   const express = require("express");
+   const bcrypt = require("bcrypt");
+   const jwt = require("jsonwebtoken");
+
+   const route = express.Router();
+
+   const User = require("../models/Users");
+   const db = require("../models/index");
+
+   route.post("/login", async (req, res) => {
+     let data = req.body;
+
+     const user = await db.User.findOne({ where: { email: data.email } });
+
+     if (!user) {
+       res.json({
+         message: "email salah!",
+       });
+       return;
+     }
+
+     if (bcrypt.compareSync(data.password, user.password)) {
+       const token = jwt.sign({ email: data.email }, "pucucasabjk");
+       res.json({
+         message: "anda berhasil login",
+         token,
+       });
+       return;
+     }
+
+     res.json({
+       message: "password anda salah",
+     });
+   });
+
+   route.post("/regis", async (req, res) => {
+     let data = req.body;
+
+     let saltRounds = 10;
+     let hashPassword = bcrypt.hashSync(data.password, saltRounds);
+     data.password = hashPassword;
+
+     await db.User.create(data);
+
+     res.json({
+       message: "berhasil regis",
+     });
+   });
+
+   module.exports = route;
+   ```
+
+3. Membuat file bernama `auth.js` pada folder `middleware`.
+
+   ```javascript
+   const jwt = require("jsonwebtoken");
+
+   const Key = "pucucasabjk";
+
+   const verifyToken = (req, res, next) => {
+     const header = req.headers.authorization;
+
+     if (!header) {
+       res.json({
+         message:
+           "undefined header, masukkan token yang telah diberikan ke dalam header.",
+       });
+       return;
+     }
+
+     const token = header.split(" ")[1];
+
+     if (!token) {
+       res.json({
+         message: "invaid token",
+       });
+       return;
+     }
+     const payload = jwt.verify(token, Key);
+
+     req.payload = payload;
+
+     next();
+   };
+
+   module.exports = verifyToken;
+   ```
