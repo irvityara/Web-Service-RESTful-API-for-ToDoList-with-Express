@@ -63,7 +63,7 @@ Pada kode ini, kita menggunakan MySQL dengan mariaDB sebagai dialect database.
 
 Buatlah server pada file app.js, tulis kode berikut
 
-    ```javascript
+    ``` javascript
     const express = require("express");
     const app = express();
 
