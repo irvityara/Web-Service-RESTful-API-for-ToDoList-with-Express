@@ -61,18 +61,17 @@ Pada kode ini, kita menggunakan MySQL dengan mariaDB sebagai dialect database.
 
 ## Server
 
+```javascript
 Buatlah server pada file app.js, tulis kode berikut
+  const express = require("express");
+  const app = express();
 
-    ``` javascript
-    const express = require("express");
-    const app = express();
+  const PORT = process.env.PORT || 3000;
 
-    const PORT = process.env.PORT || 3000;
-
-    app.listen(PORT, () => {
-      console.log("server running on port : " + PORT);
-    });
-    ```
+  app.listen(PORT, () => {
+    console.log("server running on port : " + PORT);
+  });
+```
 
 Untuk memulai menjalankan kode, gunakan command :
 
