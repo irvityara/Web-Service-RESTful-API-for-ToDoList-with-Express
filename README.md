@@ -17,11 +17,11 @@ Pada kode ini, kita menggunakan MySQL dengan mariaDB sebagai dialect database.
 
 2. Installation menggunkan git bash terminal
 
-Install pacakage.json :
+- Install pacakage.json :
 
-```markdown
-$ npm init -y
-```
+  ```markdown
+  $ npm init -y
+  ```
 
 Install Express :
 
