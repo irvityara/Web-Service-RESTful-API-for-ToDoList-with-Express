@@ -17,14 +17,21 @@ Pada kode ini, kita menggunakan MySQL dengan mariaDB sebagai dialect database.
 
 2. Installation menggunkan git bash terminal
 
-```markdown
 Install pacakage.json :
+
+```markdown
 $ npm init -y
+```
 
 Install Express :
+
+```markdown
 $ npm install express
+```
 
 Install drive database yang akan digunakan :
+
+```markdown
 $ npm install --save pg pg-hstore # Postgres
 $ npm install --save mysql // yang saya gunakan
 $ npm install --save mysql2
@@ -32,12 +39,15 @@ $ npm install --save mariadb // yang saya gunakan
 $ npm install --save sqlite3
 $ npm install --save tedious # Microsoft SQL Server
 $ npm install --save oracledb # Oracle Database
+```
 
 Install nodemon untuk mempermudah dalam menjalankan kode.
+
+```markdown
 $ npm i -D nodemon
 ```
 
-3. Buatlah file App.js kemudian pada package.json bagian script tambahkan kode berikut :
+3. Buatlah file dengan nama `App.js`, kemudian pada `package.json` bagian script tambahkan kode berikut :
 
 ```javascript
 {
@@ -69,20 +79,22 @@ $ npm start //untuk memulai menjalankan server
 $ npm run dev //untuk setiap kali menghubungkan server
 ```
 
-Server berhasil dibuat.
-
----
+## Server berhasil dibuat.
 
 ## **Set Up Sequelize**
 
 1. Installing
+   Instal Sequelize :
 
 ```markdown
-Instal Sequelize :
 $ npm install --save sequelize
+```
 
 Installing CLI :
+
+```markdown
 $ npm install --save-dev sequelize-cli
+```
 
 Dari hasil instalasi ini akan :
 
@@ -92,10 +104,12 @@ Dari hasil instalasi ini akan :
 - Membuat folder `seeders`
 
 Initialisasi CLI :
+
+```markdown
 $ npx sequelize-cli init
 ```
 
-2. Melakukan testing connection, tuliskan kode pada file app.js
+2. Melakukan testing connection, tuliskan kode pada file `app.js`
 
 ```javascript
 async function testConnection() {
@@ -111,7 +125,7 @@ async function testConnection() {
 testConnection();
 ```
 
-Menghubungkan dengan database pada file config.js
+Menghubungkan dengan database pada file `config.js`
 
 ```javascript
 module.exports = {
