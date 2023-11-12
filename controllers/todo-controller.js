@@ -64,10 +64,10 @@ module.exports = {
   },
   deleteTodoById: async (req, res) => {
     const { id } = req.params;
-    const todos = await Todo.findAll;
+    const todos = await Todo.findAll();
 
     try {
-      const todo = await Todos.find((todo) => todo.id == id);
+      const todo = await todos.find((todo) => todo.id == id);
 
       if (!todo) {
         res.json({
@@ -90,7 +90,7 @@ module.exports = {
   },
 
   deleteAllTodo: async (req, res) => {
-    const todos = await Todo.findAll;
+    const todos = await Todo.findAll();
 
     await todos.destroy();
 

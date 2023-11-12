@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 
 async function testConnection() {
   try {
-    await db.authenticate();
+    await db.Sequelize.authenticate;
     console.log("Connection has been established succesfully.");
     console.log("All models were synchronized succesfully.");
   } catch (error) {

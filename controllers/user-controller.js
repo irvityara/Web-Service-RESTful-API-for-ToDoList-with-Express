@@ -5,7 +5,7 @@ const Todo = require("../models/Todos");
 
 module.exports = {
   getAllUser: async (req, res) => {
-    const users = await User.findAll({include: Todo});
+    const users = await User.findAll();
 
     res.json({
       message: "berhasil mendapatkan data user",
