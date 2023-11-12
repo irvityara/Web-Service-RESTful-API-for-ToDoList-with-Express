@@ -1,10 +1,10 @@
 const bcrypt = require("bcrypt");
-const User = require("../models/Users");
+const {User} = require("../models");
 
 
 module.exports = {
   getAllUser: async (req, res) => {
-    const users = await User.findAll;
+    const users = await User.findAll();
 
     res.json({
       message: "berhasil mendapatkan data user",
