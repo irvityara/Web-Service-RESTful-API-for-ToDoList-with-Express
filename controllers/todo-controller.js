@@ -1,9 +1,9 @@
-const Todos = require("../models/Todos");
 const Todo = require("../models/Todos");
+const User = require("../models/Users");
 
 module.exports = {
   getAllTodo: async (req, res) => {
-    const todos = await Todo.findAll;
+    const todos = await Todo.findAll();
 
     res.json({
       message: "berhasil mendapatkan data todo",
@@ -12,7 +12,7 @@ module.exports = {
   },
   getTodoById: async (req, res) => {
     const { id } = req.params;
-    const todo = await Todos.find((todo) => todo.id == id);
+    const todo = await Todo.find((todo) => todo.id == id);
 
     res.json({
       message: "berhasil mendapatkan todo by id",
@@ -20,28 +20,36 @@ module.exports = {
     });
   },
 
-  addTodo: (req, res) => {
-    const data = req.body;
+  addTodo: async (req, res) => {
+    let data = req.body;
 
-    const newTodo = {
-      id: Todos[Todos.length - 1].id + 1,
-      value: data.value,
-    };
+    try {
+      const newTodo = {
+        id: Todo[Todo.length - 1].id + 1,
+        value: data.value,
+      };
 
-    Todos.push(newTodo);
+      await Todo.push(newTodo);
 
-    res.status(201).json({
-      message: "berhasil menambahkan todo baru",
-      data: Todos,
-    });
+      res.status(201).json({
+        message: "berhasil menambahkan todo baru",
+        data: Todo,
+      });
+        
+    } catch (error) {
+      res.json({
+        message: "gagal menambahkan todo baru",
+        error: error.message,
+      });
+    }
   },
 
   editTodoById: async (req, res) => {
     const { id } = req.params;
     const { value, status } = req.body;
 
-    const index = await Todos.find((todo) => (todo.id = id));
-    Todos[index] = { id, value, status };
+    const index = await Todo.find((todo) => (todo.id = id));
+    Todo[index] = { id, value, status };
 
     index.id = id || index.id;
     index.value = value || index.value;
@@ -51,7 +59,7 @@ module.exports = {
 
     res.json({
       message: "berhasil mengubah data todo",
-      data: Todos,
+      data: Todo,
     });
   },
   deleteTodoById: async (req, res) => {

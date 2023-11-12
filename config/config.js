@@ -1,5 +1,4 @@
-module.exports = (env) => {
-  return {
+module.exports = {
     development: {
       username: "root",
       password: "",
@@ -21,6 +20,4 @@ module.exports = (env) => {
       host: "127.0.0.1",
       dialect: "mariadb",
     },
-  }
-  [env];
 };

@@ -2,15 +2,13 @@ const express = require("express");
 const app = express();
 
 const rootRoutes = require("./routes");
-const config = require("./config/config");
+const db = require("./models");
 
 const PORT = process.env.PORT || 3000;
-const environment = process.env.NODE_ENV || "development";
-const dbConfig = config(environment);
 
 async function testConnection() {
   try {
-    await dbConfig.authenticate();
+    await db.authenticate();
     console.log("Connection has been established succesfully.");
     console.log("All models were synchronized succesfully.");
   } catch (error) {
