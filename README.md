@@ -17,35 +17,33 @@ Pada kode ini, kita menggunakan MySQL dengan mariaDB sebagai dialect database.
 
 2. Installation menggunkan git bash terminal
 
-- Install pacakage.json :
+   - Install pacakage.json :
+     ```markdown
+     $ npm init -y
+     ```
+   - Install Express :
 
-  ```markdown
-  $ npm init -y
-  ```
+     ```markdown
+     $ npm install express
+     ```
 
-Install Express :
+   - Install drive database yang akan digunakan :
 
-```markdown
-$ npm install express
-```
+     ```markdown
+     $ npm install --save pg pg-hstore # Postgres
+     $ npm install --save mysql // yang saya gunakan
+     $ npm install --save mysql2
+     $ npm install --save mariadb // yang saya gunakan
+     $ npm install --save sqlite3
+     $ npm install --save tedious # Microsoft SQL Server
+     $ npm install --save oracledb # Oracle Database
+     ```
 
-Install drive database yang akan digunakan :
+   - Install nodemon untuk mempermudah dalam menjalankan kode.
 
-```markdown
-$ npm install --save pg pg-hstore # Postgres
-$ npm install --save mysql // yang saya gunakan
-$ npm install --save mysql2
-$ npm install --save mariadb // yang saya gunakan
-$ npm install --save sqlite3
-$ npm install --save tedious # Microsoft SQL Server
-$ npm install --save oracledb # Oracle Database
-```
-
-Install nodemon untuk mempermudah dalam menjalankan kode.
-
-```markdown
-$ npm i -D nodemon
-```
+     ```markdown
+     $ npm i -D nodemon
+     ```
 
 3. Buatlah file dengan nama `App.js`, kemudian pada `package.json` bagian script tambahkan kode berikut :
 
