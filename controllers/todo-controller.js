@@ -65,12 +65,12 @@ module.exports = {
       data: Todo,
     });
   },
+
   deleteTodoById: async (req, res) => {
     const { id } = req.params;
-    const todos = await db.Todo.findAll();
-
+    
     try {
-      const todo = await todos.findByPk(id);
+      const todo = await db.Todo.findByPk(id);
 
       if (!todo) {
         res.json({
@@ -80,26 +80,41 @@ module.exports = {
 
       await todo.destroy();
 
+      const todos = await db.Todo.findAll();
+
       res.json({
         message: "berhasil menghapus todo by id",
         data: todos,
       });
+
     } catch {
       res.json({
-        message: "Cannot delete todo",
-        data: todos,
+        message: "Cannot delete todo"
       });
     }
   },
 
   deleteAllTodo: async (req, res) => {
-    const todos = await Todo.findAll();
+    const todos = await db.Todo.findAll();
 
-    await todos.destroy();
+    try {
+      if (!todos) {
+        res.json({
+          message: "Todos not found.",
+        });
+      }
 
-    res.json({
-      message: "berhasil menghapus seluruh daftar todo",
-      data: todos,
-    });
+      await todos.destroy();
+
+      res.json({
+        message: "berhasil menghapus seluruh daftar todo",
+      });
+
+    } catch {
+      res.json({
+        message: "Cannot delete todo",
+        data: todos
+      });
+    }
   },
 };
