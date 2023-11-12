@@ -25,24 +25,4 @@ module.exports = {
       data: user,
     });
   },
-
-  createUser: async (req, res) => {
-    let data = req.body;
-
-    try {
-      const hashPassword = bcrypt.hashSync(data.password, 10);
-      data.password = hashPassword;
-
-      await db.User.create(data);
-
-      res.status(201).json({
-        message: "berhasil menambahkan user",
-      });
-        
-    } catch {
-      res.json({
-        message: "gagal menambahkan user",
-      });
-    }
-  },
 };
