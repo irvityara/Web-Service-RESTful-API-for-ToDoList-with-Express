@@ -1,7 +1,4 @@
-const bcrypt = require("bcrypt");
 const User = require("../models/Users");
-const Todo = require("../models/Todos");
-
 const db = require("../models/index");
 
 
