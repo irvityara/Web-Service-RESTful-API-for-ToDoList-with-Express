@@ -1,30 +1,30 @@
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
 
-const Key = "pucucasabjk"
+const Key = "pucucasabjk";
 
 const verifyToken = (req, res, next) => {
-    const header = req.headers.authorization
+  const header = req.headers.authorization;
 
-    if (!header) {
-        res.json({
-            message: "undefined header"
-        })
-        return
-    }
+  if (!header) {
+    res.json({
+      message: "undefined header, masukkan token yang telah diberikan ke dalam header.",
+    });
+    return;
+  }
 
-    const token = header.split(" ")[1]
+  const token = header.split(" ")[1];
 
-    if (!token) {
-        res.json({
-            message: "invaid token"
-        })
-        return
-    }
-    const payload = jwt.verify(token, Key)
+  if (!token) {
+    res.json({
+      message: "invaid token",
+    });
+    return;
+  }
+  const payload = jwt.verify(token, Key);
 
-    req.payload = payload
+  req.payload = payload;
 
-    next()
-} 
+  next();
+};
 
-module.exports = verifyToken
+module.exports = verifyToken;

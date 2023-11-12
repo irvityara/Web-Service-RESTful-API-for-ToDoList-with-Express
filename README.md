@@ -114,6 +114,21 @@ try {
 }
 ```
 
+`$ npx sequelize-cli model:generate --name Users --attributes username:string,email:string,password:string`
+
 `$ npx sequelize-cli db:migrate`
 
 `$ npx sequelize-cli seed:generate --name user`
+
+`$ npx sequelize-cli seed:generate`
+
+$ npx sequelize-cli model:generate --name Todos --attribute
+s value:string,status:boolean
+
+`$ npx sequelize-cli db:migrate`
+
+$ npx sequelize-cli seed:generate --name todo
+
+$ npx sequelize-cli seed:generate
+
+$ npx sequelize-cli db:seed:all

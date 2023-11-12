@@ -1,9 +1,12 @@
+const db = require("../models");
 const Todo = require("../models/Todos");
 const User = require("../models/Users");
 
+
+
 module.exports = {
   getAllTodo: async (req, res) => {
-    const todos = await Todo.findAll();
+    const todos = await db.Todo.findAll();
 
     res.json({
       message: "berhasil mendapatkan data todo",
@@ -12,7 +15,7 @@ module.exports = {
   },
   getTodoById: async (req, res) => {
     const { id } = req.params;
-    const todo = await Todo.find((todo) => todo.id == id);
+    const todo = await db.Todo.findByPk(id);
 
     res.json({
       message: "berhasil mendapatkan todo by id",
@@ -25,11 +28,11 @@ module.exports = {
 
     try {
       const newTodo = {
-        id: Todo[Todo.length - 1].id + 1,
+        id: db.Todo[Todo.length - 1].id + 1,
         value: data.value,
       };
 
-      await Todo.push(newTodo);
+      await db.Todo.push(newTodo);
 
       res.status(201).json({
         message: "berhasil menambahkan todo baru",
@@ -48,8 +51,8 @@ module.exports = {
     const { id } = req.params;
     const { value, status } = req.body;
 
-    const index = await Todo.find((todo) => (todo.id = id));
-    Todo[index] = { id, value, status };
+    const index = await db.Todo.findByPk(id);
+    db.Todo[index] = { id, value, status };
 
     index.id = id || index.id;
     index.value = value || index.value;
@@ -64,10 +67,10 @@ module.exports = {
   },
   deleteTodoById: async (req, res) => {
     const { id } = req.params;
-    const todos = await Todo.findAll();
+    const todos = await db.Todo.findAll();
 
     try {
-      const todo = await todos.find((todo) => todo.id == id);
+      const todo = await todos.findByPk(id);
 
       if (!todo) {
         res.json({

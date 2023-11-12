@@ -2,10 +2,13 @@ const bcrypt = require("bcrypt");
 const User = require("../models/Users");
 const Todo = require("../models/Todos");
 
+const db = require("../models/index");
+
+
 
 module.exports = {
   getAllUser: async (req, res) => {
-    const users = await User.findAll();
+    const users = await db.User.findAll();
 
     res.json({
       message: "berhasil mendapatkan data user",
@@ -15,7 +18,7 @@ module.exports = {
 
   getUserById: async (req, res) => {
     const { id } = req.params;
-    const user = await User.find((user) => user.id == id);
+    const user = await db.User.findByPk(id);
 
     res.json({
       message: "berhasil mendapatkan user by id",
@@ -30,7 +33,7 @@ module.exports = {
       const hashPassword = bcrypt.hashSync(data.password, 10);
       data.password = hashPassword;
 
-      await User.create(data);
+      await db.User.create(data);
 
       res.status(201).json({
         message: "berhasil menambahkan user",
