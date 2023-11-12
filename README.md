@@ -49,28 +49,28 @@ Pada kode ini, kita menggunakan MySQL dengan mariaDB sebagai dialect database.
 
 3. Buatlah file dengan nama `App.js`, kemudian pada `package.json` bagian script tambahkan kode berikut :
 
-```javascript
-{
-  "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-}
-```
+   ```javascript
+   {
+     "scripts": {
+       "start": "node app.js",
+       "dev": "nodemon app.js",
+       "test": "echo \"Error: no test specified\" && exit 1"
+     },
+   }
+   ```
 
 Buatlah server pada file app.js, tulis kode berikut
 
-```javascript
-const express = require("express");
-const app = express();
+    ```javascript
+    const express = require("express");
+    const app = express();
 
-const PORT = process.env.PORT || 3000;
+    const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log("server running on port : " + PORT);
-});
-```
+    app.listen(PORT, () => {
+      console.log("server running on port : " + PORT);
+    });
+    ```
 
 Untuk memulai menjalankan kode, gunakan
 
@@ -84,120 +84,121 @@ $ npm run dev //untuk setiap kali menghubungkan server
 ## **Set Up Sequelize**
 
 1. Installing
-   Instal Sequelize :
 
-```markdown
-$ npm install --save sequelize
-```
+   - Instal Sequelize :
 
-Installing CLI :
+     ```markdown
+     $ npm install --save sequelize
+     ```
 
-```markdown
-$ npm install --save-dev sequelize-cli
-```
+   - Installing CLI :
 
-Dari hasil instalasi ini akan :
+     ```markdown
+     $ npm install --save-dev sequelize-cli
+     ```
 
-- Membuat file `index.js` dalam folder `models`, untuk menyimpan model dari projek
-- Membuat file `config`, berupa cli untuk menghubungkan dengan database
-- Membuat folder `migrations`
-- Membuat folder `seeders`
+   Dari hasil instalasi ini akan :
 
-Initialisasi CLI :
+   - Membuat file `index.js` dalam folder `models`, untuk menyimpan model dari projek
+   - Membuat file `config`, berupa cli untuk menghubungkan dengan database
+   - Membuat folder `migrations`
+   - Membuat folder `seeders`
 
-```markdown
-$ npx sequelize-cli init
-```
+   - Initialisasi CLI :
+
+     ```markdown
+     $ npx sequelize-cli init
+     ```
 
 2. Melakukan testing connection, tuliskan kode pada file `app.js`
 
-```javascript
-async function testConnection() {
-  try {
-    await db.Sequelize.authenticate;
-    console.log("Connection has been established succesfully.");
-    console.log("All models were synchronized succesfully.");
-  } catch (error) {
-    console.error("Unable to connect to the database", error);
-  }
-}
+   ```javascript
+   async function testConnection() {
+     try {
+       await db.Sequelize.authenticate;
+       console.log("Connection has been established succesfully.");
+       console.log("All models were synchronized succesfully.");
+     } catch (error) {
+       console.error("Unable to connect to the database", error);
+     }
+   }
 
-testConnection();
-```
+   testConnection();
+   ```
 
-Menghubungkan dengan database pada file `config.js`
+3. Menghubungkan dengan database pada file `config.js`
 
-```javascript
-module.exports = {
-  development: {
-    username: "root", //sesuaikan dengan username database
-    password: "", //sesuaikan dengan password database
-    database: "todolist_project", //nama database
-    host: "127.0.0.1",
-    dialect: "mariadb",
-  },
-  test: {
-    username: "root",
-    password: null,
-    database: "database_test",
-    host: "127.0.0.1",
-    dialect: "mariadb",
-  },
-  production: {
-    username: "root",
-    password: null,
-    database: "database_production",
-    host: "127.0.0.1",
-    dialect: "mariadb",
-  },
-};
-```
+   ```javascript
+   module.exports = {
+     development: {
+       username: "root", //sesuaikan dengan username database
+       password: "", //sesuaikan dengan password database
+       database: "todolist_project", //nama database
+       host: "127.0.0.1",
+       dialect: "mariadb",
+     },
+     test: {
+       username: "root",
+       password: null,
+       database: "database_test",
+       host: "127.0.0.1",
+       dialect: "mariadb",
+     },
+     production: {
+       username: "root",
+       password: null,
+       database: "database_production",
+       host: "127.0.0.1",
+       dialect: "mariadb",
+     },
+   };
+   ```
 
 ## Migrations dan Seeder
 
 1. Membuat Model dan Migration dari `Users` dengan berisikan `name` dan `attributes` dari model.
 
-```markdown
-$ npx sequelize-cli model:generate --name Users --attributes username:string,email:string,password:string
-```
+   ```markdown
+   $ npx sequelize-cli model:generate --name Users --attributes username:string,email:string,password:string
+   ```
 
-Dari kode tersebut akan:
+   Dari kode tersebut akan:
 
-- Membuat file `user` dalam folder `models`
-- Membuat file `XXXXXXXXXXXXXX-create-user.js` dalam folder `migrations`
+   - Membuat file `user` dalam folder `models`
+   - Membuat file `XXXXXXXXXXXXXX-create-user.js` dalam folder `migrations`
 
-Command untuk menjalankan migrations
-`$ npx sequelize-cli db:migrate`
+   Command untuk menjalankan migrations
+   `$ npx sequelize-cli db:migrate`
 
-Membuat Seeder dari `user` dengan berisikan `name` seeder
+   Membuat Seeder dari `user` dengan berisikan `name` seeder
 
-```markdown
-$ npx sequelize-cli seed:generate --name user
-```
+   ```markdown
+   $ npx sequelize-cli seed:generate --name user
+   ```
 
-Command untuk menjalankan seeders
-`$ npx sequelize-cli seed:generate`
+   Command untuk menjalankan seeders
+   `$ npx sequelize-cli seed:generate`
 
 2. Lakukan pembuatan model, migrations dan seeder untuk `Todos`
 
-```markdown
-$ npx sequelize-cli model:generate --name Todos --attributes value:string,status:boolean
-```
+   ```markdown
+   $ npx sequelize-cli model:generate --name Todos --attributes value:string,status:boolean
+   ```
 
-Command untuk menjalankan migrations
-`$ npx sequelize-cli db:migrate`
+   Command untuk menjalankan migrations
+   `$ npx sequelize-cli db:migrate`
 
-Membuat Seeder dari `todo`
+   Membuat Seeder dari `todo`
 
-```markdown
-$ npx sequelize-cli seed:generate --name todo
-```
+   ```markdown
+   $ npx sequelize-cli seed:generate --name todo
+   ```
 
-Command untuk menjalankan seeder
-`$ npx sequelize-cli seed:generate`
+   Command untuk menjalankan seeder
+   `$ npx sequelize-cli seed:generate`
 
-Command untuk menambahkan isi data dalam seed ke database.
-`$ npx sequelize-cli db:seed:all`
+   Command untuk menambahkan isi data dalam seed ke database.
+   `$ npx sequelize-cli db:seed:all`
 
 ```markdown
 Menginstall bcrypt untuk mengubah data password menjadi kode hash.
