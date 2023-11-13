@@ -5,7 +5,7 @@ const db = require("../models/index");
 
 module.exports = {
   getAllUser: async (req, res) => {
-    const users = await db.User.findAll();
+    const users = await db.Users.findAll();
 
     res.json({
       message: "berhasil mendapatkan data user",
@@ -15,7 +15,7 @@ module.exports = {
 
   getUserById: async (req, res) => {
     const { id } = req.params;
-    const user = await db.User.findByPk(id);
+    const user = await db.Users.findByPk(id);
 
     res.json({
       message: "berhasil mendapatkan user by id",

@@ -17,35 +17,35 @@ Pada kode ini, kita menggunakan MySQL dengan mariaDB sebagai dialect database.
 
 2. Installation menggunkan git bash terminal
 
-   - Install pacakage.json :
+   Install pacakage.json :
 
-     ```markdown
-     $ npm init -y
-     ```
+   ```markdown
+   $ npm init -y
+   ```
 
-   - Install Express :
+   Install Express :
 
-     ```markdown
-     $ npm install express
-     ```
+   ```markdown
+   $ npm install express
+   ```
 
-   - Install drive database yang akan digunakan :
+   Install drive database yang akan digunakan :
 
-     ```markdown
-     $ npm install --save pg pg-hstore # Postgres
-     $ npm install --save mysql // yang saya gunakan
-     $ npm install --save mysql2
-     $ npm install --save mariadb // yang saya gunakan
-     $ npm install --save sqlite3
-     $ npm install --save tedious # Microsoft SQL Server
-     $ npm install --save oracledb # Oracle Database
-     ```
+   ```markdown
+   $ npm install --save pg pg-hstore # Postgres
+   $ npm install --save mysql // yang saya gunakan
+   $ npm install --save mysql2
+   $ npm install --save mariadb // yang saya gunakan
+   $ npm install --save sqlite3
+   $ npm install --save tedious # Microsoft SQL Server
+   $ npm install --save oracledb # Oracle Database
+   ```
 
-   - Install nodemon untuk mempermudah dalam menjalankan kode.
+   Install nodemon untuk mempermudah dalam menjalankan kode.
 
-     ```markdown
-     $ npm i -D nodemon
-     ```
+   ```markdown
+   $ npm i -D nodemon
+   ```
 
 3. Buatlah file dengan nama `App.js`, kemudian pada `package.json` bagian script tambahkan kode berikut :
 
@@ -61,7 +61,7 @@ Pada kode ini, kita menggunakan MySQL dengan mariaDB sebagai dialect database.
 
 ## Server
 
-Buatlah server pada file app.js, tulis kode berikut
+Buatlah server pada file `app.js`, tulis kode berikut
 
 ```javascript
 const express = require("express");
@@ -87,17 +87,17 @@ Server berhasil dibuat.
 
 1. Installing
 
-   - Instal Sequelize :
+   Instal Sequelize :
 
-     ```markdown
-     $ npm install --save sequelize
-     ```
+   ```markdown
+   $ npm install --save sequelize
+   ```
 
-   - Installing CLI :
+   Installing CLI :
 
-     ```markdown
-     $ npm install --save-dev sequelize-cli
-     ```
+   ```markdown
+   $ npm install --save-dev sequelize-cli
+   ```
 
    Dari hasil instalasi ini akan :
 
@@ -106,11 +106,11 @@ Server berhasil dibuat.
    - Membuat folder `migrations`
    - Membuat folder `seeders`
 
-   - Initialisasi CLI :
+   Initialisasi CLI :
 
-     ```markdown
-     $ npx sequelize-cli init
-     ```
+   ```markdown
+   $ npx sequelize-cli init
+   ```
 
 2. Melakukan testing connection, tuliskan kode pada file `app.js`
 
