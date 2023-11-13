@@ -164,6 +164,7 @@ Server berhasil dibuat.
    $ npx sequelize-cli model:generate --name Users --attributes username:string,email:string,password:string
    ```
 
+   Migration dan model disini dijalankan untuk membuat table dalam database MySQL.
    Dari kode tersebut akan:
 
    - Membuat file `user` dalam folder `models`
@@ -172,7 +173,7 @@ Server berhasil dibuat.
    Command untuk menjalankan migrations
    `$ npx sequelize-cli db:migrate`
 
-   Membuat Seeder dari `user` dengan berisikan `name` seeder
+   Kemudian untuk membuat Seeder dari `user` dengan berisikan `name` seeder, gunakan command berikut:
 
    ```markdown
    $ npx sequelize-cli seed:generate --name user
@@ -190,7 +191,7 @@ Server berhasil dibuat.
    Command untuk menjalankan migrations
    `$ npx sequelize-cli db:migrate`
 
-   Membuat Seeder dari `todo`
+   Membuat Seeder dari `todo` dengan command berikut:
 
    ```markdown
    $ npx sequelize-cli seed:generate --name todo
@@ -199,7 +200,7 @@ Server berhasil dibuat.
    Command untuk menjalankan seeder
    `$ npx sequelize-cli seed:generate`
 
-   Command untuk menambahkan isi data dalam seed ke database.
+   Command untuk menambahkan isi data dalam seed ke table database.
    `$ npx sequelize-cli db:seed:all`
 
 ## Middleware (Membuat Authetication dan Authorization)
