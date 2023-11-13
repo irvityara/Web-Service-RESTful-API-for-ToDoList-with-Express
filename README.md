@@ -218,7 +218,7 @@ Server berhasil dibuat.
    $ npm i jsonwebtoken
    ```
 
-2. Membuat route bernama `auth.route.js` pada folder `routes`.
+2. Membuat file bernama `auth.route.js` pada folder `routes`.
 
    Membuat sistem user dapat melakukan `registrasi` dan `login` dengan memberikan `username`, `email` dan `password` untuk sistem authentication.
    Kemudian untuk bisa mengakses todo, user perlu melakukan `validasi token` dengan authorization.
