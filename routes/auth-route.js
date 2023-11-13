@@ -10,7 +10,7 @@ const db = require("../models/index");
 route.post("/login", async (req, res) => {
   let data = req.body;
 
-  const user = await db.User.findOne({ where: { email: data.email } });
+  const user = await db.Users.findOne({ where: { email: data.email } });
 
   if (!user) {
     res.json({
@@ -40,7 +40,7 @@ route.post("/regis", async (req, res) => {
   let hashPassword = bcrypt.hashSync(data.password, saltRounds);
   data.password = hashPassword;
 
-  await db.User.create(data);
+  await db.Users.create(data);
 
   res.json({
       message: "berhasil regis",
