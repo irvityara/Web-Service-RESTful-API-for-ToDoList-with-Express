@@ -1,5 +1,5 @@
 const User = require("../models/Users");
-const db = require("../models/index");
+const db = require("../models");
 
 
 
