@@ -7,7 +7,7 @@ const authRoutes = require("./auth-route");
 const verifyToken = require("../middleware/auth");
 
 route.get("/", (req, res) => {
-  res.json("halo");
+  res.json("Selamat datang di aplikasi backend todo list");
 });
 
 route.use("/users", userRoutes);
