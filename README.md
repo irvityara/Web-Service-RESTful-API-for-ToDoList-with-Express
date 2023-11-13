@@ -311,3 +311,30 @@ Server berhasil dibuat.
 
    module.exports = verifyToken;
    ```
+
+   ## Route Endpoint
+
+   Route digunakan untuk memberikan respon tertentu kepada client sesuai dengan endpoint tertentu. Berikut route endpoint yang saya gunakan ke dalam file di folder `route`.
+
+   ```javascript
+   route.get("/", getAllUser);
+   route.get("/:id", getUserById);
+
+   route.get("/", getAllTodo);
+   route.get("/:id", getTodoById);
+   route.post("/", addTodo);
+   route.put("/:id", editTodoById);
+   route.delete("/:id", deleteTodoById);
+   route.delete("/", deleteAllTodo);
+
+   route.post("/login", () => {});
+   route.post("/regis", () => {});
+   ```
+
+   Kemudian kode kode endpoint tersebut dihubungkan kedalam `index.js` di dalam folder `route`.
+
+   ```javascript
+   route.use("/users", userRoutes);
+   route.use("/auth", authRoutes);
+   route.use("/todos", verifyToken, todoRoutes);
+   ```
