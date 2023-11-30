@@ -35,7 +35,7 @@ Pada kode ini, kita menggunakan MySQL dengan mariaDB sebagai dialect database.
    $ npm install --save pg pg-hstore # Postgres
    $ npm install --save mysql // yang saya gunakan
    $ npm install --save mysql2
-   $ npm install --save mariadb // yang saya gunakan
+   $ npm install --save mariadb
    $ npm install --save sqlite3
    $ npm install --save tedious # Microsoft SQL Server
    $ npm install --save oracledb # Oracle Database
@@ -133,25 +133,25 @@ Server berhasil dibuat.
    ```javascript
    module.exports = {
      development: {
-       username: "root", //sesuaikan dengan username database
-       password: "", //sesuaikan dengan password database
-       database: "todolist_project", //nama database
-       host: "127.0.0.1",
-       dialect: "mariadb",
+       username: "freedb_irvityara",
+       password: "&ZZJJQ5W78vu*!b",
+       database: "freedb_todolist_backend",
+       host: "sql.freedb.tech",
+       dialect: "mysql",
      },
      test: {
        username: "root",
        password: null,
        database: "database_test",
        host: "127.0.0.1",
-       dialect: "mariadb",
+       dialect: "mysql",
      },
      production: {
        username: "root",
        password: null,
        database: "database_production",
        host: "127.0.0.1",
-       dialect: "mariadb",
+       dialect: "mysql",
      },
    };
    ```
